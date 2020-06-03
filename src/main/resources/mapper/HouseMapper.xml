@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.fanchencloud.house.dao.HouseMapper">
+    <resultMap id="BaseResultMap" type="cn.fanchencloud.house.entity.House">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="type" jdbcType="BIT" property="type"/>
+        <result column="price" jdbcType="INTEGER" property="price"/>
+        <result column="images" jdbcType="VARCHAR" property="images"/>
+        <result column="area" jdbcType="INTEGER" property="area"/>
+        <result column="beds" jdbcType="INTEGER" property="beds"/>
+        <result column="baths" jdbcType="INTEGER" property="baths"/>
+        <result column="rating" jdbcType="DOUBLE" property="rating"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="properties" jdbcType="VARCHAR" property="properties"/>
+        <result column="floor_plan" jdbcType="VARCHAR" property="floorPlan"/>
+        <result column="tags" jdbcType="VARCHAR" property="tags"/>
+        <result column="create_time" jdbcType="DATE" property="createTime"/>
+        <result column="community_id" jdbcType="INTEGER" property="communityId"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="state" jdbcType="BIT" property="state"/>
+        <result column="last_edit_time" jdbcType="DATE" property="lastEditTime"/>
+    </resultMap>
+
+</mapper>
