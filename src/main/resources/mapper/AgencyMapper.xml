@@ -12,5 +12,17 @@
         <result column="create_time" jdbcType="DATE" property="createTime"/>
         <result column="last_edit_time" jdbcType="DATE" property="lastEditTime"/>
     </resultMap>
-  
+    <select id="getAllAgency" resultType="cn.fanchencloud.house.entity.Agency">
+        select id,
+               name,
+               address,
+               phone,
+               email,
+               description,
+               web_site,
+               create_time,
+               last_edit_time
+        from agency;
+    </select>
+
 </mapper>
