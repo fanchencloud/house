@@ -15,4 +15,10 @@
         <result column="create_time" jdbcType="DATE" property="createTime"/>
         <result column="last_edit_time" jdbcType="DATE" property="lastEditTime"/>
     </resultMap>
+    <insert id="addUser" parameterType="cn.fanchencloud.house.entity.User">
+        insert into `user`(username, password, phone, email, self_introduction, avatar, type, enable, agency_id,
+                           create_time, last_edit_time)
+        VALUES (#{username}, #{password}, #{phone}, #{email}, #{selfIntroduction}, #{avatar}, #{type}, #{enable},
+                #{agencyId}, #{createTime}, #{lastEditTime})
+    </insert>
 </mapper>

@@ -26,7 +26,7 @@
                 <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
                     <h3>Account Type</h3>
                     <form role="form" id="form-create-account" method="post" enctype="multipart/form-data"
-                          action="/accounts/register">
+                          action="/user/register">
                         <div class="radio" id="create-account-user">
                             <label>
                                 <input type="radio" value="1" id="account-type-user" name="type" required>普通用户
@@ -49,7 +49,7 @@
                         <hr>
                         <div class="form-group">
                             <label for="form-create-account-full-name">全名:</label>
-                            <input type="text" class="form-control" id="form-create-account-full-name" name="name"
+                            <input type="text" class="form-control" id="form-create-account-full-name" name="username"
                                    required>
                         </div><!-- /.form-group -->
                         <div class="form-group">
@@ -105,14 +105,15 @@
 <!--[if gt IE 8]>
 <script type="text/javascript" src="/static/assets/js/ie.js"></script>
 <![endif]-->
-<script type="text/javascript">
+<script type="text/javascript" th:inline="javascript">
     $(document).ready(function () {
-        let errorMsg = [[${errorMsg}]];
-        let successMsg = [[${successMsg}]];
-        if (errorMsg) {
+        let errorMsg = [[${errorMessage}]];
+        let successMsg = [[${successMessage}]];
+        console.log("errorMsg = " + errorMsg + " successMsg = " + successMsg);
+        if (!isStringEmpty(errorMsg)) {
             errormsg("error", errorMsg);
         }
-        if (successMsg) {
+        if (!isStringEmpty(successMsg)) {
             successmsg("success", successMsg);
         }
     })

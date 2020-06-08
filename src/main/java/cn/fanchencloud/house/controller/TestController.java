@@ -1,9 +1,8 @@
 package cn.fanchencloud.house.controller;
 
-import cn.fanchencloud.house.entity.Agency;
-import cn.fanchencloud.house.service.AgencyService;
-import cn.fanchencloud.house.service.BlogService;
 import cn.fanchencloud.house.entity.Blog;
+import cn.fanchencloud.house.service.BlogService;
+import cn.fanchencloud.house.util.redis.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by handsome programmer.
@@ -33,11 +34,8 @@ public class TestController {
      */
     private BlogService blogService;
 
-
-    /**
-     * 注入房产经纪机构服务层
-     */
-    private AgencyService agencyService;
+    @Autowired
+    private RedisUtil redisUtil;
 
     @ResponseBody
     @GetMapping("/test")
@@ -50,30 +48,19 @@ public class TestController {
     }
 
     @GetMapping("/testError")
-    @ResponseBody
-    public String testError() {
-        String message = "test";
-        if (message != null) {
-            throw new IllegalArgumentException();
-        }
-        return "test";
-    }
-
-    @GetMapping("/login")
-    public ModelAndView loginPage() {
-        ModelAndView modelAndView = new ModelAndView("account/register");
-        List<Agency> agencyList = agencyService.getAllAgency();
-        modelAndView.addObject("agencyList", agencyList);
+    public ModelAndView testError() {
+        ModelAndView modelAndView = new ModelAndView("registerActivationNotification");
+        redisUtil.set("test", "hello");
+        String username = redisUtil.get("fanchencloud");
+        redisUtil.setEx("time1", "test time1", 30, TimeUnit.MILLISECONDS);
+        modelAndView.addObject("username", username);
+        modelAndView.addObject("validateLink", "http://www.baidu.com");
+        modelAndView.addObject("sendDate", new Date());
         return modelAndView;
     }
 
     @Autowired
     public void setBlogService(BlogService blogService) {
         this.blogService = blogService;
-    }
-
-    @Autowired
-    public void setAgencyService(AgencyService agencyService) {
-        this.agencyService = agencyService;
     }
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+        span {
+            color: orange
+        }
+    </style>
+    <title>激活邮件</title>
+</head>
+<body>
+<div>
+    <p>
+        您好， <span th:text="${username}">xxx</span>，感谢您注册好房网，您正在进行邮箱验证，
+    </p>
+    <p>
+        本次请求激活链接为：<a th:text="${validateLink}" th:href="${validateLink}">1111</a>
+        (为了保障您帐号的安全性，请在30分钟内完成验证。)
+    </p>
+    <br>
+    <br>
+    <br>
+    <p>
+        好房网团队<br/>
+        [[${#dates.format(sendDate, 'yyyy-MM-dd HH:mm')}]]
+    </p>
+</div>
+</body>
+</html>

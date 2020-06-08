@@ -20,3 +20,4 @@ target/
 .mvn/
 mvnw
 mvnw.cmd
+/src/main/resources/appliacrion-mail.yml

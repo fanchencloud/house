@@ -1,5 +1,7 @@
 package cn.fanchencloud.house.entity;
 
+import lombok.Data;
+
 import java.util.Date;
 
 /**
@@ -11,124 +13,65 @@ import java.util.Date;
  *
  * @author chen
  */
+@Data
 public class User {
+    /**
+     * 主键id
+     */
     private Integer id;
 
+    /**
+     * 用户名称
+     */
     private String username;
 
+    /**
+     * 用户密码
+     */
     private String password;
 
+    /**
+     * 用户手机号码
+     */
     private String phone;
 
+    /**
+     * 电子邮件地址
+     */
     private String email;
 
+    /**
+     * 自我介绍
+     */
     private String selfIntroduction;
 
+    /**
+     * 用户头像
+     */
     private String avatar;
 
-    private Boolean type;
+    /**
+     * 用户类别：1-普通用户，2-房产经纪人
+     */
+    private Integer type;
 
-    private Boolean enable;
+    /**
+     * 是否启用：1-启用，0-禁用
+     */
+    private Integer enable;
 
+    /**
+     * 所属经济机构 默认值：0
+     */
     private Integer agencyId;
 
+    /**
+     * 创建时间
+     */
     private Date createTime;
 
+    /**
+     * 最后修改时间
+     */
     private Date lastEditTime;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
-    }
-
-    public String getSelfIntroduction() {
-        return selfIntroduction;
-    }
-
-    public void setSelfIntroduction(String selfIntroduction) {
-        this.selfIntroduction = selfIntroduction == null ? null : selfIntroduction.trim();
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar == null ? null : avatar.trim();
-    }
-
-    public Boolean getType() {
-        return type;
-    }
-
-    public void setType(Boolean type) {
-        this.type = type;
-    }
-
-    public Boolean getEnable() {
-        return enable;
-    }
-
-    public void setEnable(Boolean enable) {
-        this.enable = enable;
-    }
-
-    public Integer getAgencyId() {
-        return agencyId;
-    }
-
-    public void setAgencyId(Integer agencyId) {
-        this.agencyId = agencyId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getLastEditTime() {
-        return lastEditTime;
-    }
-
-    public void setLastEditTime(Date lastEditTime) {
-        this.lastEditTime = lastEditTime;
-    }
 }
